@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Dashboard</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="container">
+    <h2>Intern Dashboard</h2>
+    <p><strong>Name:</strong> <span id="name"></span></p>
+    <p><strong>Referral Code:</strong> <span id="referral"></span></p>
+    <p><strong>Total Donations Raised:</strong> ₹<span id="donations"></span></p>
+
+    <h3>Rewards</h3>
+    <ul>
+      <li>🎁 T-Shirt (on ₹1000)</li>
+      <li>🎁 Mug (on ₹5000)</li>
+      <li>🎁 Certificate (on ₹10000)</li>
+    </ul>
+
+    <a href="leaderboard.html">View Leaderboard</a>
+  </div>
+
+  <script>
+    fetch("http://localhost:3000/api/intern")
+      .then(res => res.json())
+      .then(data => {
+        document.getElementById("name").innerText = data.name;
+        document.getElementById("referral").innerText = data.referralCode;
+        document.getElementById("donations").innerText = data.totalDonations;
+      });
+  </script>
+</body>
+</html>
